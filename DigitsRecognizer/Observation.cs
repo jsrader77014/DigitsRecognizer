@@ -7,7 +7,7 @@ namespace DigitsRecognizer
     
     public class Observation
     {
-        public string Label { get; private set; }
+        public string Label { get;  set; }
         public int[] Pixels { get; private set; }
 
         public Observation(string label, int[] pixels)

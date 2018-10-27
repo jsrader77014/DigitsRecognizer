@@ -4,7 +4,7 @@ using System.Text;
 
 namespace DigitsRecognizer
 {
-    interface IClassifier
+    public interface IClassifier
     {
         void Train(IEnumerable<Observation> trainingSet);
         string Predict(int[] pixels);

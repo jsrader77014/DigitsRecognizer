@@ -7,6 +7,7 @@ namespace DigitsRecognizer
     public class BasicClassifier: IClassifier
     {
         private IEnumerable<Observation> data;
+        private IEnumerable<Observation> test;
         private readonly IDistance distance;
 
         public BasicClassifier(IDistance distance)
@@ -19,6 +20,8 @@ namespace DigitsRecognizer
             this.data = trainingSet;
         }
 
+        
+      
         string IClassifier.Predict(int[] pixels)
         {
             Observation currentBest = null;

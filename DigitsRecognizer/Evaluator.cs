@@ -5,22 +5,32 @@ using System.Linq;
 
 namespace DigitsRecognizer
 {
-    class Evaluator
+    public class Evaluator
     {
-        public static double Score(Observation obs, IClassifier classifier)
+        public void Predict(IEnumerable<Observation> testSet, IClassifier classifier)
+        {
+            foreach(Observation observation in testSet)
+            {
+                observation.Label = classifier.Predict(observation.Pixels);
+            }
+        }
+
+        public static double Correct(
+        IEnumerable<Observation> validationSet,
+        IClassifier classifier)
+        {
+            return validationSet
+            .Select(obs => Score(obs, classifier))
+            .Average();
+        }
+        private static double Score(
+        Observation obs,
+        IClassifier classifier)
         {
             if (classifier.Predict(obs.Pixels) == obs.Label)
                 return 1.0;
             else
-                return 0;
-        }
-
-        public static double Correct(IEnumerable<Observation> validationSet, IClassifier classifier)
-        {
-            return validationSet
-                .Select(obs => Score(obs, classifier))
-                .Average();
-                
+                return 0.0;
         }
     }
 }
