@@ -1,4 +1,4 @@
-# DigitsRecognizer
+# Digits Recognizer
 Machine Learning C# Implementation of a Digits Classifier
 
 Simple design using the Manhatan Distance to determine siumlarities to a training set of data
